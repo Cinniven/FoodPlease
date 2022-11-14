@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _paperPrefab: {fileID: 7697494171888057415, guid: 5ede0be44c73f794c9163387edde387b, type: 3}
-  tableTop: {fileID: 25865834}
+  _tableTop: {fileID: 25865834}
 --- !u!4 &220135114
 Transform:
   m_ObjectHideFlags: 0

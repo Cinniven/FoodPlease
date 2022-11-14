@@ -668,7 +668,7 @@ MonoBehaviour:
   textFile: {fileID: 4900000, guid: 45b44c8da111c42069f9b832836a8df3, type: 3}
   textLines: []
   currentLine: 0
-  endAtLine: 0
+  endAtLine: 2
 --- !u!4 &1919040571
 Transform:
   m_ObjectHideFlags: 0

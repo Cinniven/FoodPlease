@@ -39,5 +39,14 @@ public class TextBoxManager : MonoBehaviour
     {
         theText.text = textLines[currentLine];
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            currentLine += 1;
+        }
+
+        if (currentLine > endAtLine)
+        {
+            textBox.SetActive(false);
+        }
     }
 }
