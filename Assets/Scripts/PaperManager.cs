@@ -5,33 +5,26 @@ using UnityEngine;
 public class PaperManager : MonoBehaviour
 {
     [SerializeField] private GameObject _paperPrefab;
-    [SerializeField] private GameObject tableTop;
-    private MeshCollider spawnSurface;
+    [SerializeField] private GameObject _tableTop;
+    private MeshCollider _spawnSurface;
 
-    public void Awake()
+    void Awake()
     {
-        spawnSurface = tableTop.GetComponent<MeshCollider>();
+        _spawnSurface = _tableTop.GetComponent<MeshCollider>();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        SpawnPaper();
+        SpawnPaper(_paperPrefab);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void SpawnPaper()
+    public void SpawnPaper(GameObject paper)
     {
         float screenX, screenY;
         Vector2 spawnPosition;
-        screenX = Random.Range(spawnSurface.bounds.min.x, spawnSurface.bounds.max.x);
-        screenY = Random.Range(spawnSurface.bounds.min.y, spawnSurface.bounds.max.y);
+        screenX = Random.Range(_spawnSurface.bounds.min.x, _spawnSurface.bounds.max.x);
+        screenY = Random.Range(_spawnSurface.bounds.min.y, _spawnSurface.bounds.max.y);
         spawnPosition = new Vector2(screenX, screenY);
-        Instantiate(_paperPrefab, spawnPosition, _paperPrefab.transform.rotation);
+        Instantiate(paper, spawnPosition, _paperPrefab.transform.rotation);
     }
 }

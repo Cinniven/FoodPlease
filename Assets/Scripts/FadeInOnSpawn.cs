@@ -12,6 +12,8 @@ public class FadeInOnSpawn : MonoBehaviour
     {
         _renderer = GetComponent<SpriteRenderer>();
         _color = _renderer.material.color;
+        _color.a = 0f;
+        _renderer.material.color = _color;
     }
 
     void Start()
