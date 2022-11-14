@@ -15,16 +15,17 @@ public class PaperManager : MonoBehaviour
 
     void Start()
     {
-        SpawnPaper(_paperPrefab);
+        SpawnPaper();
     }
 
-    public void SpawnPaper(GameObject paper)
+    public void SpawnPaper()
     {
         float screenX, screenY;
         Vector2 spawnPosition;
         screenX = Random.Range(_spawnSurface.bounds.min.x, _spawnSurface.bounds.max.x);
         screenY = Random.Range(_spawnSurface.bounds.min.y, _spawnSurface.bounds.max.y);
         spawnPosition = new Vector2(screenX, screenY);
-        Instantiate(paper, spawnPosition, _paperPrefab.transform.rotation);
+        GameObject paper = Instantiate(_paperPrefab, spawnPosition, _paperPrefab.transform.rotation);
+        paper.transform.parent = gameObject.transform;
     }
 }
