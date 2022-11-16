@@ -9,6 +9,7 @@ public class Paper : MonoBehaviour
     {
         _paperManager = GetComponentInParent<PaperManager>();
     }
+
     public void Yes()
     {
         Debug.Log("YES!");
