@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Simple drag and drop code from GameDev Beginner
 public class PlayerController : MonoBehaviour
 {
     private GameObject _selectedObject;
