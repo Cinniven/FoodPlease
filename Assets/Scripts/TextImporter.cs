@@ -15,7 +15,6 @@ public class TextImporter : MonoBehaviour
         {
             textLines = textFile.text.Split("\n");
         }
-        
     }
 
 }

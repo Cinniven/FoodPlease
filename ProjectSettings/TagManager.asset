@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Grabable
+  - Swapable
+  - Zoomies
+  - Paper
   layers:
   - Default
   - TransparentFX
@@ -11,7 +15,7 @@ TagManager:
   - Paper
   - Water
   - UI
-  - 
+  - MainPaper
   - 
   - 
   - 

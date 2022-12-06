@@ -6,22 +6,27 @@ public class PlayerController : MonoBehaviour
 {
     private GameObject _selectedObject;
     Vector3 _offset;
-    void Update()
+    
+    private void Update()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetMouseButtonDown(0))
         {
             Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
-            if (targetObject)
+            if(!targetObject) return;
+            if (targetObject.CompareTag("Grabable"))
             {
-                _selectedObject = targetObject.transform.gameObject;
+                Debug.Log(targetObject);
+                _selectedObject = targetObject.transform.parent.gameObject;
                 _offset = _selectedObject.transform.position - mousePosition;
             }
         }
+
         if (_selectedObject)
         {
             _selectedObject.transform.position = mousePosition + _offset;
         }
+        
         if (Input.GetMouseButtonUp(0) && _selectedObject)
         {
             _selectedObject = null;
