@@ -11,12 +11,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _paperPrefab;
     private MeshCollider _spawnSurface;
     [SerializeField] private List<TextAsset> _paperTexts;
+    [SerializeField] private int _papersPerDay = 2;
 
     //Score
     [SerializeField] private int _karma, _unstampedPapers, _papersDeliveredToday;
 
     //Days
-    [SerializeField] private int _day = 1;
+    [SerializeField] private int _day = 1, _specialDays = 5;
     public int Day {get {return _day;}}
 
     //Fade
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
         _spawnSurface = GameObject.Find("TablePaperArea").GetComponent<MeshCollider>();
         _fade = GameObject.Find("Fade").GetComponent<Animator>();
         _papersDeliveredToday = 0;
-        if (_day % 5 == 0) SpawnItem(_paperPrefab, true);
+        if (_day % _specialDays == 0) SpawnItem(_paperPrefab, true);
         else SpawnItem(_paperPrefab, false);
     }
 
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour
         if(!special) _papersDeliveredToday++;
         _karma += points;
 
-        if(_papersDeliveredToday == 2) EndDay();
+        if(_papersDeliveredToday == _papersPerDay) EndDay();
         else SpawnItem(_paperPrefab, false);
     }
 
