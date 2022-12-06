@@ -33,14 +33,12 @@ public class Stamp : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if(other.gameObject.layer == 3)
-        {
-            _paperTarget = null;
-            _paper = false;
+        if(other.gameObject.layer != 3) return;
+        _paperTarget = null;
+        _paper = false;
 
-            if (_isYes) StampPaper.RemoveListener(other.GetComponentInParent<Paper>().Yes);
-            else StampPaper.RemoveListener(other.GetComponentInParent<Paper>().No);
-        }
+        if (_isYes) StampPaper.RemoveListener(other.GetComponentInParent<Paper>().Yes);
+        else StampPaper.RemoveListener(other.GetComponentInParent<Paper>().No);
     }
 
     void Stamping()
@@ -49,13 +47,10 @@ public class Stamp : MonoBehaviour
 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
-
-        if (targetObject == this.transform.GetChild(0).GetComponent<BoxCollider2D>())
-        {
-            StampPaper.Invoke();
-
-            if(_isYes) Instantiate(_stampPrefabYes, transform.position, Quaternion.identity, _paperTarget.transform);
-            else Instantiate(_stampPrefabNo, transform.position, Quaternion.identity, _paperTarget.transform);
-        }
+        if (targetObject != this.transform.GetChild(0).GetComponent<BoxCollider2D>()) return;
+        
+        StampPaper.Invoke();
+        if(_isYes) Instantiate(_stampPrefabYes, transform.position, Quaternion.identity, _paperTarget.transform);
+        else Instantiate(_stampPrefabNo, transform.position, Quaternion.identity, _paperTarget.transform);
     }
 }
