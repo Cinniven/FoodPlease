@@ -4,25 +4,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    //GameManager DontDestroy
     public static GameManager Instance;
 
-    //Paper & Spawning
     [SerializeField] private GameObject _paperPrefab;
     private MeshCollider _spawnSurface;
     [SerializeField] private List<TextAsset> _paperTexts;
+    private List<string> _dialog;
+    public List<string> Dialog {get {return _dialog;}}
     [SerializeField] private int _papersPerDay = 2;
-
-    //Score
     [SerializeField] private int _karma, _unstampedPapers, _papersDeliveredToday;
-
-    //Days
     [SerializeField] private int _day = 1, _specialDays = 5;
     public int Day {get {return _day;}}
-
-    //Fade
     private Animator _fade; 
-
     void Awake()
     {
         //This makes it so that our that our GameManager stays when we load new scenes and that is dosnt duplicate
