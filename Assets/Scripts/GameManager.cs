@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _paperPrefab;
     private MeshCollider _spawnSurface;
     [SerializeField] private List<TextAsset> _paperTexts;
-    private List<string> _dialog;
+    private List<string> _dialog = new List<string>();
     public List<string> Dialog {get {return _dialog;}}
     [SerializeField] private int _papersPerDay = 2;
     [SerializeField] private int _karma, _unstampedPapers, _papersDeliveredToday;
@@ -37,13 +37,21 @@ public class GameManager : MonoBehaviour
         _papersDeliveredToday = 0;
         if (_day % _specialDays == 0) SpawnItem(_paperPrefab, true);
         else SpawnItem(_paperPrefab, false);
+        _dialog = new List<string>();
+        _dialog.Add("So about the choices you took yesterday, I do have some thoughts I wanna share.");
     }
 
-    public void PaperDelivered(int points, bool stamped, bool special)
+    public void PaperDelivered(int points, bool stamped, bool special, string dialog)
     {
+        Debug.Log(points);
+        Debug.Log(stamped);
+        Debug.Log(special);
+        Debug.Log(dialog);
+
         if(!stamped) _unstampedPapers++;
         if(!special) _papersDeliveredToday++;
         _karma += points;
+        _dialog.Add(dialog);
 
         if(_papersDeliveredToday == _papersPerDay) EndDay();
         else SpawnItem(_paperPrefab, false);

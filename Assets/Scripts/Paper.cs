@@ -10,6 +10,7 @@ public class Paper : MonoBehaviour
     [SerializeField] TextMeshProUGUI _title, _content;
     private int _karmaPoints = 1;
     [SerializeField] private string[] _text;
+    private string _dialogYes, _dialogNo, _dialogUnstamped;
 
     private void Awake()
     {
@@ -18,12 +19,15 @@ public class Paper : MonoBehaviour
 
     public void SetPaper(TextAsset content, bool isSpecial)
     {
-        if(content != null) _text = content.text.Split(" #END ");
+        if(content != null) _text = content.text.Split("\n");
         if(isSpecial) _special = true;
 
         _title.text = _text[0];
         _content.text = _text[1];
         _karmaPoints = int.Parse(_text[2]);
+        _dialogYes = _text[3];
+        _dialogNo = _text[4];
+        _dialogUnstamped = _text[5];
     }
     
     public void Yes()
@@ -48,8 +52,8 @@ public class Paper : MonoBehaviour
         paperAnim.SetTrigger("Deliver");
         gameObject.transform.GetChild(0).transform.parent = null;
         Destroy(this.gameObject, paperAnim.GetCurrentAnimatorStateInfo(0).length);
-        if (_yes) _gameManager.PaperDelivered(_karmaPoints, _stamped, _special);
-        else if (_no) _gameManager.PaperDelivered(-_karmaPoints, _stamped, _special);
-        else _gameManager.PaperDelivered(-_karmaPoints * 2, _stamped, _special);
+        if (_yes) _gameManager.PaperDelivered(_karmaPoints, _stamped, _special, _dialogYes);
+        else if (_no) _gameManager.PaperDelivered(-_karmaPoints, _stamped, _special, _dialogNo);
+        else _gameManager.PaperDelivered(-_karmaPoints * 2, _stamped, _special, _dialogUnstamped);
     }
 }

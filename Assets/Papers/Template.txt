@@ -1,0 +1,6 @@
+Title
+Content of the paper. This is the proposition that is going to be written onto the paper itself.
+Points given
+This is the dialog for saying yes to the proposition.
+This is the dialog for saying no to the proposition.
+This is the dialog if you dont stamp the proposition.
