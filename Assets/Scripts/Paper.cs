@@ -54,6 +54,6 @@ public class Paper : MonoBehaviour
         Destroy(this.gameObject, paperAnim.GetCurrentAnimatorStateInfo(0).length);
         if (_yes) _gameManager.PaperDelivered(_karmaPoints, _stamped, _special, _dialogYes);
         else if (_no) _gameManager.PaperDelivered(-_karmaPoints, _stamped, _special, _dialogNo);
-        else _gameManager.PaperDelivered(-_karmaPoints * 2, _stamped, _special, _dialogUnstamped);
+        else _gameManager.PaperDelivered(0, _stamped, _special, _dialogUnstamped);
     }
 }

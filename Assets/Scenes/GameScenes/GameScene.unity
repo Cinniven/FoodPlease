@@ -383,6 +383,7 @@ MonoBehaviour:
   _paperTexts:
   - {fileID: 4900000, guid: 9ca8b505b631c6e47a03de86b4b11963, type: 3}
   - {fileID: 4900000, guid: c5a77883d26133e4aa928e9cf75f18f0, type: 3}
+  - {fileID: 4900000, guid: 15db107b7e0516d44b00a78bd9a0318e, type: 3}
   _papersPerDay: 2
   _karma: 0
   _unstampedPapers: 0
