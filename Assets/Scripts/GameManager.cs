@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     private List<string> _dialog = new List<string>();
     public List<string> Dialog {get {return _dialog;}}
     [SerializeField] private int _papersPerDay = 2;
-    [SerializeField] private int _karma, _unstampedPapers, _papersDeliveredToday, _day = 1, _specialDays = 3, _lastDay = 7;
+    [SerializeField] private int _karma, _unstampedPapers, _papersDeliveredToday, _day = 1, _specialDays = 3;
 
     public int Karma {get {return _karma;}}
     public int UnstampedPapers {get {return _unstampedPapers;}}
