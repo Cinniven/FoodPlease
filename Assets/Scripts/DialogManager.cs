@@ -8,12 +8,13 @@ public class DialogManager : MonoBehaviour
 {
     [SerializeField] private List<string> _dialog;
     [SerializeField] TextMeshProUGUI _dialogText;
-    private bool _isTalking, _dialogStarted;
+    private bool _isTalking, _dialogStarted, _intro, _ending;
     private Animator _anim;
 
     void Awake()
     {
         _anim = FindObjectOfType<Animator>();
+        if (SceneManager.GetActiveScene().name == "OpeningScene") _intro = true;
     }
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class DialogManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_intro) Intro();
         if (!_dialogStarted) return;
         if (!Input.anyKeyDown) return;
         if (_dialog == null)
@@ -49,6 +51,7 @@ public class DialogManager : MonoBehaviour
         {
             _anim.SetTrigger("DialogDone");
         }
+
     }
 
     public void StartDialog()
@@ -81,6 +84,21 @@ public class DialogManager : MonoBehaviour
 
     public void NextScene()
     {
-        SceneManager.LoadScene("GameScene");
+        if(_intro) SceneManager.LoadScene("EndOfDay");
+        else if (_ending) SceneManager.LoadScene("Credits");
+        else SceneManager.LoadScene("GameScene");
+    }
+
+    public void Intro()
+    {
+        if (_dialog.Count == 8) _anim.SetBool("Poverty", true);
+        if (_dialog.Count == 7) _anim.SetBool("War", true);
+        if (_dialog.Count == 6) _anim.SetBool("Disaster", true);
+        if (_dialog.Count == 5) _anim.SetBool("Other", true);
+    }
+
+    public void Ending()
+    {
+
     }
 }

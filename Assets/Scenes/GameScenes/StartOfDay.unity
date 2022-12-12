@@ -845,20 +845,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dialog:
-  - In the world we live in, hunger is a major problem that affects millions of people.
-  - It is a consequence of poverty, war, natural disasters, and other factors that
-    prevent people from having access to the food they need to survive.
-  - Hunger is not just an inconvenience, it is a serious issue that can lead to malnutrition,
-    illness, and even death.
-  - 'The United Nations has set a goal to end world hunger by 2030, but we still
-    have a long way to go. '
-  - In this game, you will experience what it is like to live in a world where hunger
-    is a daily reality, and you will have to make difficult choices to survive and
-    help others.
-  - Each day you get presented with two different choices that impact how many people
-    you can save.
-  - Can you overcome the difficult choices and make a difference in the fight against
-    hunger in the long term?
+  - Hi! Welcome to your first day at the office!
+  - Normally I would give you a breifing on your work so far here.
+  - You job is to take a decition on the propositions you get!
+  - We need to either take actions for a long term solution or a short term fix!
+  - We cant mix and match the two too much or we will run out of budget.
+  - If we do run out of budget nothing will really change now or in the future!
   _dialogText: {fileID: 146983251}
 --- !u!1 &534065832
 GameObject:
