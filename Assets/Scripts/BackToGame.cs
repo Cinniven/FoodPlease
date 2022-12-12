@@ -17,7 +17,8 @@ public class BackToGame : MonoBehaviour
 
     public void NewDay()
     {
-        SceneManager.LoadScene("StartOfDay");
+        if (FindDay() == "2") SceneManager.LoadScene("Ending");
+        else SceneManager.LoadScene("StartOfDay");
     }
 
     private string FindDay()

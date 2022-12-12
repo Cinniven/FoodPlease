@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class DialogManager : MonoBehaviour
 {
-    [SerializeField] private List<string> _dialog;
+    [SerializeField] private List<string> _dialog, _endings;
     [SerializeField] TextMeshProUGUI _dialogText;
     private bool _isTalking, _dialogStarted, _intro, _ending;
     private Animator _anim;
@@ -15,11 +15,17 @@ public class DialogManager : MonoBehaviour
     {
         _anim = FindObjectOfType<Animator>();
         if (SceneManager.GetActiveScene().name == "OpeningScene") _intro = true;
+        if (SceneManager.GetActiveScene().name == "Ending")
+        {
+            _ending = true;
+            ChooseEnding();
+        }
     }
+
     // Start is called before the first frame update
     void Start()
     {
-        if(FindObjectOfType<GameManager>())
+        if(FindObjectOfType<GameManager>() && SceneManager.GetActiveScene().name != "Ending")
         {
             _dialog = null;
             _dialog = GameManager.Instance.Dialog;
@@ -30,6 +36,7 @@ public class DialogManager : MonoBehaviour
     void Update()
     {
         if (_intro) Intro();
+        if (_ending) Ending();
         if (!_dialogStarted) return;
         if (!Input.anyKeyDown) return;
         if (_dialog == null)
@@ -97,8 +104,38 @@ public class DialogManager : MonoBehaviour
         if (_dialog.Count == 5) _anim.SetBool("Other", true);
     }
 
+    public void ChooseEnding()
+    {
+        if(GameManager.Instance.UnstampedPapers == 3)
+        {
+            //FIRED
+            _dialog.Add(_endings[0]);
+            _anim.SetBool("Fired", true);
+            return;
+        }
+
+        if(GameManager.Instance.Karma >= 2)
+        {
+            //LONG TERM ENDING
+            _dialog.Add(_endings[1]);
+            _anim.SetBool("LongTerm", true);
+        }
+        else if(GameManager.Instance.Karma <= -2)
+        {
+            //SHORT TERM ENDING
+            _dialog.Add(_endings[2]);
+            _anim.SetBool("ShortTerm", true);
+        }
+        else
+        {
+            //NOTHING CHANGED ENDING
+            _dialog.Add(_endings[3]);
+            _anim.SetBool("Nothing", true);
+        }
+    }
+
     public void Ending()
     {
-
+        if(_dialog.Count == 1) _anim.SetTrigger("End");
     }
 }
