@@ -17,7 +17,9 @@ public class GameManager : MonoBehaviour
     public int Karma {get {return _karma;}}
     public int UnstampedPapers {get {return _unstampedPapers;}}
     public int Day {get {return _day;}}
-    private Animator _fade; 
+    private Animator _fade;
+    [SerializeField] private AudioClip _deliverSound, _unstampedSound;
+    private AudioSource _audio;
     void Awake()
     {
         //This makes it so that our that our GameManager stays when we load new scenes and that is dosnt duplicate
@@ -26,9 +28,13 @@ public class GameManager : MonoBehaviour
             Instance.NewDay();
             Destroy(this.gameObject);
         }
-        else Instance = this;
-        DontDestroyOnLoad(this.gameObject);
-        if(Instance == this) NewDay();
+        else 
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+            _audio = GetComponent<AudioSource>();
+            NewDay();
+        }
     }
 
     public void NewDay()
@@ -50,7 +56,13 @@ public class GameManager : MonoBehaviour
         Debug.Log(special);
         Debug.Log(dialog);
 
-        if(stamped) _unstampedPapers++;
+        if(!stamped)
+        {
+            _unstampedPapers++;
+            _audio.PlayOneShot(_unstampedSound);
+        }
+        else _audio.PlayOneShot(_deliverSound);
+
         if(!special) _papersDeliveredToday++;
         _karma += points;
         _dialog.Add(dialog);

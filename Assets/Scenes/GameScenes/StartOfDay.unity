@@ -711,6 +711,7 @@ GameObject:
   - component: {fileID: 434466305}
   - component: {fileID: 434466309}
   - component: {fileID: 434466310}
+  - component: {fileID: 434466311}
   m_Layer: 5
   m_Name: DialogCanvas
   m_TagString: Untagged
@@ -851,7 +852,110 @@ MonoBehaviour:
   - We need to either take actions for a long term solution or a short term fix!
   - We cant mix and match the two too much or we will run out of budget.
   - If we do run out of budget nothing will really change now or in the future!
+  _endings: []
+  _dialogSounds:
+  - {fileID: 8300000, guid: cb1b6eb8ee001ee40846f386cbc80ae3, type: 3}
+  - {fileID: 8300000, guid: 9c892dabda4c7204f877234d877c1e9c, type: 3}
+  - {fileID: 8300000, guid: d5e389686f2bee04fb83742801af4230, type: 3}
+  - {fileID: 8300000, guid: 8804c0ea354777c4c85d29aecdb29504, type: 3}
+  - {fileID: 8300000, guid: 363ad55c101325741b92f7dd10692cd5, type: 3}
   _dialogText: {fileID: 146983251}
+--- !u!82 &434466311
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434466304}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &534065832
 GameObject:
   m_ObjectHideFlags: 0

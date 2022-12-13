@@ -7,7 +7,14 @@ public class PlayerController : MonoBehaviour
 {
     private GameObject _selectedObject;
     Vector3 _offset;
+    [SerializeField] private AudioClip _pickUp, _letGo;
+    private AudioSource _audio;
     
+    void Awake()
+    {
+        _audio = GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -18,6 +25,7 @@ public class PlayerController : MonoBehaviour
             if (targetObject.CompareTag("Grabable"))
             {
                 Debug.Log(targetObject);
+                _audio.PlayOneShot(_pickUp);
                 _selectedObject = targetObject.transform.parent.gameObject;
                 _offset = _selectedObject.transform.position - mousePosition;
             }
@@ -30,6 +38,7 @@ public class PlayerController : MonoBehaviour
         
         if (Input.GetMouseButtonUp(0) && _selectedObject)
         {
+            _audio.PlayOneShot(_letGo);
             _selectedObject = null;
         }
     }

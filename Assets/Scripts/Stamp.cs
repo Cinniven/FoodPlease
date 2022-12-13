@@ -10,6 +10,12 @@ public class Stamp : MonoBehaviour
     private GameObject _paperTarget;
     private bool _paper;
     [SerializeField] private bool _isYes;
+    AudioSource _audio;
+
+    void Awake()
+    {
+        _audio = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -49,6 +55,7 @@ public class Stamp : MonoBehaviour
         Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
         if (targetObject != this.transform.GetChild(0).GetComponent<BoxCollider2D>()) return;
         
+        _audio.Play();
         StampPaper.Invoke();
         if(_isYes) Instantiate(_stampPrefabYes, transform.position, Quaternion.identity, _paperTarget.transform);
         else Instantiate(_stampPrefabNo, transform.position, Quaternion.identity, _paperTarget.transform);

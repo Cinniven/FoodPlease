@@ -7,18 +7,22 @@ using UnityEngine.SceneManagement;
 public class DialogManager : MonoBehaviour
 {
     [SerializeField] private List<string> _dialog, _endings;
+    [SerializeField] private AudioClip[] _dialogSounds;
     [SerializeField] TextMeshProUGUI _dialogText;
     private bool _isTalking, _dialogStarted, _intro, _ending;
     private Animator _anim;
+    private AudioSource _audio;
 
     void Awake()
     {
-        _anim = FindObjectOfType<Animator>();
+        _audio = GetComponent<AudioSource>();
+        _anim = GetComponent<Animator>();
         if (SceneManager.GetActiveScene().name == "OpeningScene") _intro = true;
         if (SceneManager.GetActiveScene().name == "Ending")
         {
             _ending = true;
             ChooseEnding();
+            GameManager.Instance.GetComponent<AudioSource>().Stop();
         }
     }
 
@@ -71,11 +75,14 @@ public class DialogManager : MonoBehaviour
 
     IEnumerator Dialog(string currentDialog)
     {
+        int i = 3;
         _dialogText.text = null;
         _isTalking = true;
         foreach(char c in currentDialog)
         {
             _dialogText.text += c;
+            if(i % 3 == 0) _audio.PlayOneShot(_dialogSounds[Random.Range(0, _dialogSounds.Length)]);
+            i++;
             yield return new WaitForSeconds(0.05f);
         }
         _dialog.Remove(currentDialog);
