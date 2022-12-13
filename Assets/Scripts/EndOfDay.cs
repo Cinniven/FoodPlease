@@ -19,7 +19,9 @@ public class EndOfDay : MonoBehaviour
 
     public void NewDay()
     {
-        if (GameManager.Instance.Day == _endingDay || GameManager.Instance.UnstampedPapers == 3) SceneManager.LoadScene("Ending");
+        if(!GameManager.Instance) SceneManager.LoadScene("StartOfDay");
+        if (GameManager.Instance.Day == _endingDay) SceneManager.LoadScene("Ending");
+        else if (GameManager.Instance.UnstampedPapers == 3) SceneManager.LoadScene("Ending");
         else SceneManager.LoadScene("StartOfDay");
     }
 

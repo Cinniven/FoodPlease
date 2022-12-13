@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         Debug.Log(special);
         Debug.Log(dialog);
 
-        if(!stamped) _unstampedPapers++;
+        if(stamped) _unstampedPapers++;
         if(!special) _papersDeliveredToday++;
         _karma += points;
         _dialog.Add(dialog);
