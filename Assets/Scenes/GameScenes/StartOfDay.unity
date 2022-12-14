@@ -847,11 +847,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialog:
   - Hi! Welcome to your first day at the office!
-  - Normally I would give you a breifing on your work so far here.
-  - You job is to take a decition on the propositions you get!
-  - We need to either take actions for a long term solution or a short term fix!
-  - We cant mix and match the two too much or we will run out of budget.
-  - If we do run out of budget nothing will really change now or in the future!
+  - We will always start the day off by going over a briefing of the decisions made
+    the previous day.
+  - Your job is to make a decision on whether or not to approve the proposed initiatives
+    you get presented with!
+  - Your decisions will either have long-term or short-term consequences, but it
+    will not be apparent immediately. It's up to you to figure out what the repercussions
+    could be, and to choose accordingly.
+  - As you can imagine, it is most of the time impossible to find a solution for
+    both long-term and short-term problems without running over our budget.
+  - Given how serious of a problem world hunger is today, the goal is to make as
+    positive of an impact as possible. However it is not possible to solve everything,
+    so choose carefully.
   _endings: []
   _dialogSounds:
   - {fileID: 8300000, guid: cb1b6eb8ee001ee40846f386cbc80ae3, type: 3}
@@ -873,7 +880,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0.5
   Loop: 0
   Mute: 0
   Spatialize: 0

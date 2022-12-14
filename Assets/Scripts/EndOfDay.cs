@@ -7,7 +7,7 @@ using TMPro;
 public class EndOfDay : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _dayCount;
-    private int _endingDay = 2;
+    private int _endingDay = 4;
 
 
     // Start is called before the first frame update
@@ -21,7 +21,7 @@ public class EndOfDay : MonoBehaviour
     {
         if(!GameManager.Instance) SceneManager.LoadScene("StartOfDay");
         if (GameManager.Instance.Day == _endingDay) SceneManager.LoadScene("Ending");
-        else if (GameManager.Instance.UnstampedPapers == 3) SceneManager.LoadScene("Ending");
+        else if (GameManager.Instance.UnstampedPapers >= 3) SceneManager.LoadScene("Ending");
         else SceneManager.LoadScene("StartOfDay");
     }
 

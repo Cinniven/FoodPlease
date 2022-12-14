@@ -99,7 +99,11 @@ public class DialogManager : MonoBehaviour
     public void NextScene()
     {
         if(_intro) SceneManager.LoadScene("EndOfDay");
-        else if (_ending) SceneManager.LoadScene("Credits");
+        else if (_ending)
+        {
+            Destroy(GameManager.Instance.gameObject);
+            SceneManager.LoadScene("MainMenu");
+        }
         else SceneManager.LoadScene("GameScene");
     }
 
@@ -113,15 +117,14 @@ public class DialogManager : MonoBehaviour
 
     public void ChooseEnding()
     {
-        if(GameManager.Instance.UnstampedPapers == 3)
+        if(GameManager.Instance.UnstampedPapers >= 3)
         {
             //FIRED
             _dialog.Add(_endings[0]);
             _anim.SetBool("Fired", true);
             return;
         }
-
-        if(GameManager.Instance.Karma >= 2)
+        else if(GameManager.Instance.Karma >= 2)
         {
             //LONG TERM ENDING
             _dialog.Add(_endings[1]);
@@ -143,6 +146,6 @@ public class DialogManager : MonoBehaviour
 
     public void Ending()
     {
-        if(_dialog.Count == 1) _anim.SetTrigger("End");
+        if(_dialog.Count == 0) _anim.SetTrigger("End");
     }
 }

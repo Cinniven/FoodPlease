@@ -1038,10 +1038,18 @@ MonoBehaviour:
   _dialog:
   - Time has come for a conclusion to your work.
   _endings:
-  - Fired
-  - LongTerm
-  - ShortTerm
-  - No
+  - "You didn\u2019t do anything.  You have been fired. We need someone who can make
+    decisions."
+  - 'In the end, good job, your decisions lead to the eradicating of world hunger.
+    The world will now be able to succeed in the long term, there is both enough
+    food to go around and ways to make people have access to it.  '
+  - 'You did an okay job, your decisions were able to make a significant impact of
+    the issues of hunger around the world, but only for the short term. While your
+    good efforts do not completely eradicate hunger, you still made a noticeable
+    difference for a lot of people around the globe.  '
+  - While you had good intentions, you started to many project so none of them came
+    to fruition. The world will continue to confront the harsh reality in solving
+    the complex problem that is world hunger.
   _dialogSounds:
   - {fileID: 8300000, guid: cb1b6eb8ee001ee40846f386cbc80ae3, type: 3}
   - {fileID: 8300000, guid: 9c892dabda4c7204f877234d877c1e9c, type: 3}
@@ -1178,7 +1186,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0.5
   Loop: 0
   Mute: 0
   Spatialize: 0
